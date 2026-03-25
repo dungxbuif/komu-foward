@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  bot-datcom:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: datcom
+    restart: unless-stopped
+    environment:
+      # Hardcoded envs from local .env
+      - MEZON_BOT_ID=2008734598795628544
+      - MEZON_BOT_TOKEN=MEHk2UfvLhbi0-zh
+      - SOURCE_THREAD_ID=1841290471456903168
+      - DESTINATION_THREAD_ID=2035922068192628736
+      - NODE_ENV=production
