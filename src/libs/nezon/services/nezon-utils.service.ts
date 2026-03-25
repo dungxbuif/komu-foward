@@ -115,6 +115,27 @@ export class NezonUtilsService {
     return undefined;
   }
 
+  async sendMessage(
+    channelId: string,
+    message: SmartMessageLike,
+  ): Promise<any> {
+    try {
+      const channel = await this.getChannel(channelId);
+      if (!channel || typeof channel.send !== 'function') {
+        throw new Error(`Channel ${channelId} not found or doesn't support sending messages`);
+      }
+      const payload = this.normalizeSmartMessage(message);
+      return await channel.send(
+        payload.content,
+        payload.mentions,
+        payload.attachments,
+      );
+    } catch (error) {
+      this.logger.error(`failed to send message to ${channelId}`, (error as Error)?.stack);
+      return undefined;
+    }
+  }
+
   async getManagedMessage(
     id: string,
     channelId?: string,
