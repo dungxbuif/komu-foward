@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       - MEZON_BOT_ID=2008734598795628544
-      - MEZON_BOT_TOKEN=MEHk2UfvLhbi0-zh
+      - MEZON_BOT_TOKEN=HYV70pmZqr9MBTCT
       - SOURCE_THREAD_ID=1841290471456903168
       - DESTINATION_THREAD_ID=2035922068192628736
       - NODE_ENV=production
